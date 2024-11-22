@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/discover"
+        android:icon="@drawable/discover"
+        android:title="Khám phá"
+
+        />
+    <item
+        android:id="@+id/playlist"
+        android:icon="@drawable/playlist"
+        android:title="Playlist"
+
+        />
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/favorite"
+        android:title="Yêu thích"
+
+        />
+    <item
+        android:id="@+id/user"
+        android:icon="@drawable/user"
+        android:title="Hồ sơ"
+        />
+</menu>
