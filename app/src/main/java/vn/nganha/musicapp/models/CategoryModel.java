@@ -2,11 +2,10 @@ package vn.nganha.musicapp.models;
 
 public class CategoryModel {
     private String name;
-    private String coverUrl;
+    private String coverURL; // Trường lưu URL ảnh
 
-    public CategoryModel(String name, String coverUrl) {
-        this.name = name;
-        this.coverUrl = coverUrl;
+    public CategoryModel() {
+        // Constructor mặc định cho Firestore
     }
 
     public String getName() {
@@ -17,11 +16,11 @@ public class CategoryModel {
         this.name = name;
     }
 
-    public String getCoverUrl() {
-        return coverUrl;
+    public String getCoverURL() {
+        return coverURL;
     }
 
-    public void setCoverUrl(String coverUrl) {
-        this.coverUrl = coverUrl;
+    public void setCoverURL(String coverURL) {
+        this.coverURL = coverURL;
     }
 }

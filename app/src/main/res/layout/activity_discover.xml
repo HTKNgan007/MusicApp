@@ -30,7 +30,7 @@
         android:layout_height="32dp"
         android:src="@drawable/menu"
         android:layout_alignParentEnd="true"
-        android:Layout_centerVertical="true"/>
+        android:layout_centerVertical="true"/>
     </RelativeLayout>
 
     <ScrollView
@@ -53,7 +53,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/categories_recycler_view"/>
+                android:id="@+id/categoriesRecyclerView"/>
         </LinearLayout>
 
     </ScrollView>
