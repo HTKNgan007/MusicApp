@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "475526622033",
+    "project_id": "musicapp-f73ff",
+    "storage_bucket": "musicapp-f73ff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475526622033:android:6981dd294b6864ae548170",
+        "android_client_info": {
+          "package_name": "vn.nganha.musicapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtxJ9mzjbshgZ9k4YlG5uXQ2BZI59gUJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
