@@ -6,4 +6,5 @@
     <color name="colorUnselected">#888888</color>
     <color name="bg_menu">#27403E</color>
     <color name="blue_dark">#1c2e4a</color>
+    <color name="gray">#CFCFD0</color>
 </resources>

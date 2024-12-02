@@ -1,8 +1,11 @@
 package vn.nganha.musicapp.models;
 
+import java.util.List;
+
 public class CategoryModel {
     private String name;
     private String coverURL; // Trường lưu URL ảnh
+    private List<String> songs;
 
     public CategoryModel() {
         // Constructor mặc định cho Firestore
@@ -22,5 +25,13 @@ public class CategoryModel {
 
     public void setCoverURL(String coverURL) {
         this.coverURL = coverURL;
+    }
+
+    public List<String> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<String> songs) {
+        this.songs = songs;
     }
 }

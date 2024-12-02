@@ -1,16 +1,22 @@
 package vn.nganha.musicapp.adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+import vn.nganha.musicapp.Activities.SongsListActivity;
 import vn.nganha.musicapp.R;
 import vn.nganha.musicapp.databinding.CategoryItemRecyclerBinding;
 import vn.nganha.musicapp.models.CategoryModel;
@@ -34,11 +40,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
         // Bind data to views
         public void bindData(CategoryModel category) {
             binding.nameTextView.setText(category.getName());
-            Glide.with(binding.coverImageView.getContext())
-                    .load(category.getCoverURL())
-                    .apply(new RequestOptions().placeholder(R.drawable.avatar_song) // placeholder image
-                            .error(R.drawable.bg_app)) // error image
+            Glide.with(binding.coverImageView.getContext()).load(category.getCoverURL())
+                    .apply(new RequestOptions(). transform(new RoundedCorners(32)))
                     .into(binding.coverImageView);
+            //lệnh chạy SongListActivity khi click vào
+            Context context = binding.getRoot().getContext();
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SongsListActivity.category = category;
+                    Intent intent = new Intent(context, SongsListActivity.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
