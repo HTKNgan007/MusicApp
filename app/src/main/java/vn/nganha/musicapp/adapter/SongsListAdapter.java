@@ -1,5 +1,6 @@
 package vn.nganha.musicapp.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 
 import vn.nganha.musicapp.Activities.MyExoplayer;
+import vn.nganha.musicapp.Activities.PlayerActivity;
 import vn.nganha.musicapp.databinding.SongListItemRecyclerBinding;
 import vn.nganha.musicapp.models.SongModel;
 
@@ -50,6 +52,8 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.MyVi
                                 @Override
                                 public void onClick(View v) {
                                     MyExoplayer.startPlaying(v.getContext(), song);
+                                    Intent intent = new Intent(v.getContext(), PlayerActivity.class);
+                                    v.getContext().startActivity(intent);
                                 }
                             });
                         }

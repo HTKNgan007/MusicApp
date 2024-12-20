@@ -12,6 +12,9 @@ public class MyExoplayer {
     private static ExoPlayer exoPlayer = null;
     private static SongModel currentSong = null;
 
+    public static SongModel getCurrentSong() {
+        return currentSong;
+    }
     // Trả về instance của ExoPlayer
     public static ExoPlayer getInstance() {
         return exoPlayer;
@@ -23,15 +26,18 @@ public class MyExoplayer {
             exoPlayer = new ExoPlayer.Builder(context).build();
         }
 
-        currentSong = song;
-
-        if (currentSong != null && currentSong.getUrl() != null) {
-            String url = currentSong.getUrl();
-            MediaItem mediaItem = MediaItem.fromUri(url);
-
-            exoPlayer.setMediaItem(mediaItem);
-            exoPlayer.prepare();
-            exoPlayer.play();
+        if (currentSong != song) {
+            // It's a new song, so start playing
+            currentSong = song;
+            if (currentSong != null && currentSong.getUrl() != null) {
+                String url = currentSong.getUrl();
+                MediaItem mediaItem = MediaItem.fromUri(url);
+                if (exoPlayer != null) {
+                    exoPlayer.setMediaItem(mediaItem);
+                    exoPlayer.prepare();
+                    exoPlayer.play();
+                }
+            }
         }
     }
 }
