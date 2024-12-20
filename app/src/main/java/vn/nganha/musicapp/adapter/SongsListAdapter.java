@@ -1,6 +1,7 @@
 package vn.nganha.musicapp.adapter;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
+import vn.nganha.musicapp.Activities.MyExoplayer;
 import vn.nganha.musicapp.databinding.SongListItemRecyclerBinding;
 import vn.nganha.musicapp.models.SongModel;
 
@@ -44,6 +46,12 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.MyVi
                                     .load(song.getCoverUrl())
                                     .apply(new RequestOptions().transform(new RoundedCorners(32)))
                                     .into(binding.songCoverImageView);
+                            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    MyExoplayer.startPlaying(v.getContext(), song);
+                                }
+                            });
                         }
                     });
         }

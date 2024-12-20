@@ -51,11 +51,17 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    //
+    //FireStore
     implementation("com.google.firebase:firebase-firestore:24.6.0")
+    //Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.0")
 
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+    //Media3 ExoPlayer
+    implementation ("androidx.media3:media3-exoplayer:1.2.0")
+    implementation ("androidx.media3:media3-exoplayer-dash:1.2.0")
+    implementation ("androidx.media3:media3-ui:1.2.0")
+
 }
