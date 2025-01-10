@@ -5,11 +5,10 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.media3.common.Player;
+import androidx.media3.common.util.UnstableApi;
 import androidx.media3.exoplayer.ExoPlayer;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 
 import vn.nganha.musicapp.R;
 import vn.nganha.musicapp.databinding.ActivityPlayerBinding;
@@ -28,6 +27,7 @@ public class PlayerActivity extends AppCompatActivity {
         }
     };
 
+    @UnstableApi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,7 @@ public class PlayerActivity extends AppCompatActivity {
                     .load(currentSong.getCoverUrl()) // Tải ảnh từ URL
                     .circleCrop()
                     .into(binding.songCoverImageView); // Đặt vào ImageView
+            // Hiện media_playing.gif
             Glide.with(binding.songGifImageView.getContext())
                     .load(R.drawable.media_playing)
                     .circleCrop()
@@ -51,8 +52,17 @@ public class PlayerActivity extends AppCompatActivity {
             exoPlayer = MyExoplayer.getInstance();
             // Gán exoPlayer vào PlayerView
             binding.playerView.setPlayer(exoPlayer);
+            binding.playerView.showController();
             // Lắng nghe sự kiện để hiện gif
             exoPlayer.addListener(playerListener);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (exoPlayer != null) {
+            exoPlayer.removeListener(playerListener);
         }
     }
 

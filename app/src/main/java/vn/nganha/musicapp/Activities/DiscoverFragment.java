@@ -1,5 +1,6 @@
 package vn.nganha.musicapp.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -18,6 +21,7 @@ import java.util.List;
 
 import vn.nganha.musicapp.R;
 import vn.nganha.musicapp.adapter.CategoryAdapter;
+import vn.nganha.musicapp.adapter.SectionSongListAdapter;
 import vn.nganha.musicapp.models.CategoryModel;
 
 public class DiscoverFragment extends Fragment {
@@ -45,6 +49,8 @@ public class DiscoverFragment extends Fragment {
 
         // Gọi hàm để tải dữ liệu từ Firestore
         getCategories();
+        // Hiển thị thêm Section
+        setupSection(view);
     }
 
     private void getCategories() {
@@ -64,4 +70,47 @@ public class DiscoverFragment extends Fragment {
                     e.printStackTrace();
                 });
     }
+
+    private void setupSection(View view) {
+        // Kết nối TextView và RecyclerView của Section
+        TextView sectionTitle = view.findViewById(R.id.section_1_title); // Kết nối TextView
+        RecyclerView sectionRecyclerView = view.findViewById(R.id.section_1_recycler_view);
+
+        // Thiết lập layout manager cho RecyclerView
+        sectionRecyclerView.setLayoutManager(
+                new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false)
+        );
+
+        // Lấy dữ liệu từ Firestore
+        FirebaseFirestore.getInstance()
+                .collection("sections") // Truy cập collection "sections"
+                .document("section_1") // Truy cập document "section_1"
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    // Chuyển đổi dữ liệu Firestore thành đối tượng CategoryModel
+                    CategoryModel section = documentSnapshot.toObject(CategoryModel.class);
+                    if (section != null) {
+                        // Thiết lập tiêu đề (name) cho section
+                        sectionTitle.setText(section.getName()); // Gán tên section vào TextView
+
+                        // Khởi tạo adapter cho Section
+                        SectionSongListAdapter sectionAdapter = new SectionSongListAdapter(section.getSongs());
+
+                        // Gán adapter vào RecyclerView
+                        sectionRecyclerView.setAdapter(sectionAdapter);
+
+                        // Thiết lập sự kiện khi click vào section
+                        view.findViewById(R.id.section_1_main_layout).setOnClickListener(v -> {
+                            // Chuyển dữ liệu category sang Activity tiếp theo
+                            SongsListActivity.category = section;
+                            startActivity(new Intent(getContext(), SongsListActivity.class));
+                        });
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // Xử lý lỗi khi không lấy được dữ liệu
+                    e.printStackTrace();
+                });
+    }
+
 }
