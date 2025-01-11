@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>s
+    <color name="white">#FFFFFFFF</color>
     <color name="blue_dark">#1c2e4a</color>
     <color name="gray">#CFCFD0</color>
     <color name="light_white">#F8F8F8</color>
+    <color name="green_tech">#56B77E</color>
+    <color name="red">#c10a28</color>
 </resources>

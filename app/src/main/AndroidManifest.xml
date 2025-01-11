@@ -15,6 +15,15 @@
         android:theme="@style/Theme.MusicApp"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.PlayerActivity"
             android:exported="false" />
         <activity
@@ -22,9 +31,9 @@
             android:exported="false" />
         <activity
             android:name=".Activities.Discover"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
