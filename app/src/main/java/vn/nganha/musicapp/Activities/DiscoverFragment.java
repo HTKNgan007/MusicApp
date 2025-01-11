@@ -9,20 +9,27 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
+import java.util.Objects;
 
 import vn.nganha.musicapp.R;
 import vn.nganha.musicapp.adapter.CategoryAdapter;
 import vn.nganha.musicapp.adapter.SectionSongListAdapter;
 import vn.nganha.musicapp.models.CategoryModel;
+import vn.nganha.musicapp.models.SongModel;
 
 public class DiscoverFragment extends Fragment {
     private RecyclerView categoriesRecyclerView;
@@ -50,7 +57,18 @@ public class DiscoverFragment extends Fragment {
         // Gọi hàm để tải dữ liệu từ Firestore
         getCategories();
         // Hiển thị thêm Section
-        setupSection(view);
+        setupSection("section_1",
+                view.findViewById(R.id.section_1_main_layout),
+                view.findViewById(R.id.section_1_title),
+                view.findViewById(R.id.section_1_recycler_view));
+        setupSection("section_2",
+                view.findViewById(R.id.section_2_main_layout),
+                view.findViewById(R.id.section_2_title),
+                view.findViewById(R.id.section_2_recycler_view));
+        setupSection("Section_3",
+                view.findViewById(R.id.section_3_main_layout),
+                view.findViewById(R.id.section_3_title),
+                view.findViewById(R.id.section_3_recycler_view));
     }
 
     private void getCategories() {
@@ -71,36 +89,35 @@ public class DiscoverFragment extends Fragment {
                 });
     }
 
-    private void setupSection(View view) {
-        // Kết nối TextView và RecyclerView của Section
-        TextView sectionTitle = view.findViewById(R.id.section_1_title); // Kết nối TextView
-        RecyclerView sectionRecyclerView = view.findViewById(R.id.section_1_recycler_view);
+    private void setupSection(String id, RelativeLayout mainLayout, TextView titleView, RecyclerView recyclerView) {
 
         // Thiết lập layout manager cho RecyclerView
-        sectionRecyclerView.setLayoutManager(
+        recyclerView.setLayoutManager(
                 new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false)
         );
 
         // Lấy dữ liệu từ Firestore
         FirebaseFirestore.getInstance()
-                .collection("sections") // Truy cập collection "sections"
-                .document("section_1") // Truy cập document "section_1"
+                .collection("sections") // Truy cập collection "sections" ở cloud firestore
+                .document(id) // Truy cập document với id đưa vào
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     // Chuyển đổi dữ liệu Firestore thành đối tượng CategoryModel
                     CategoryModel section = documentSnapshot.toObject(CategoryModel.class);
                     if (section != null) {
                         // Thiết lập tiêu đề (name) cho section
-                        sectionTitle.setText(section.getName()); // Gán tên section vào TextView
+                        titleView.setText(section.getName()); // Gán tên section vào TextView
 
                         // Khởi tạo adapter cho Section
                         SectionSongListAdapter sectionAdapter = new SectionSongListAdapter(section.getSongs());
 
                         // Gán adapter vào RecyclerView
-                        sectionRecyclerView.setAdapter(sectionAdapter);
+                        recyclerView.setAdapter(sectionAdapter);
 
+                        // set trạng thái hiển thị cho section nếu có nội dung
+                        mainLayout.setVisibility(View.VISIBLE);
                         // Thiết lập sự kiện khi click vào section
-                        view.findViewById(R.id.section_1_main_layout).setOnClickListener(v -> {
+                        mainLayout.setOnClickListener(v -> {
                             // Chuyển dữ liệu category sang Activity tiếp theo
                             SongsListActivity.category = section;
                             startActivity(new Intent(getContext(), SongsListActivity.class));

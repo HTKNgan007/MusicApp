@@ -60,11 +60,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
-            
+                android:layout_height="20dp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/section_1_main_layout">
 
                 <TextView
@@ -89,6 +91,63 @@
                     android:layout_below="@id/section_1_title"/>
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/section_2_main_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_2_title"
+                    tools:text="Trending"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/icon_arrow_right"
+                    android:layout_alignParentEnd="true"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_2_recycler_view"
+                    android:layout_below="@id/section_2_title"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginBottom="115dp"
+                android:id="@+id/section_3_main_layout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_3_title"
+                    tools:text="Trending"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-medium"/>
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/icon_arrow_right"
+                    android:layout_alignParentEnd="true"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/section_3_recycler_view"
+                    android:layout_below="@id/section_3_title"/>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
