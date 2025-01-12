@@ -5,7 +5,7 @@
     android:id="@+id/fragment_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_dark"
+    android:background="@drawable/background_app"
     tools:context=".Activities.DiscoverFragment">
 
     <RelativeLayout
@@ -14,18 +14,19 @@
         android:id="@+id/toolbar">
 
         <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/logo"
             android:layout_centerVertical="true" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome to MusicApp"
+            android:text="Thế giới âm nhạc"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:gravity="center" />
+            android:textSize="30sp"
+           android:gravity="center"/>
 
     </RelativeLayout>
 

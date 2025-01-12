@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <!-- Tạo một gradient background với màu xanh lá tối -->
+        <shape
+            android:shape="rectangle">
+            <solid android:color="#388E3C"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+    <item android:right="0dp" android:left="0dp" android:top="0dp" android:bottom="0dp">
+        <!-- Tạo một hiệu ứng gradient mờ dần -->
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#388E3C"
+                android:centerColor="#2C6B2F"
+                android:endColor="#1B3A28"
+            android:angle="90"/>
+        </shape>
+    </item>
+</layer-list>
