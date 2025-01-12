@@ -9,27 +9,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
-import java.util.Objects;
 
 import vn.nganha.musicapp.R;
 import vn.nganha.musicapp.adapter.CategoryAdapter;
 import vn.nganha.musicapp.adapter.SectionSongListAdapter;
 import vn.nganha.musicapp.models.CategoryModel;
-import vn.nganha.musicapp.models.SongModel;
 
 public class DiscoverFragment extends Fragment {
     private RecyclerView categoriesRecyclerView;
@@ -38,7 +31,6 @@ public class DiscoverFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_discover, container, false);
     }
 

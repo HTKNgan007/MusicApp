@@ -6,12 +6,8 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -106,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             // Chuyển sang MainActivity nếu đã đăng nhập
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

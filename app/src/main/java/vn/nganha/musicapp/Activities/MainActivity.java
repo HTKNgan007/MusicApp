@@ -41,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.frame_layout, new DiscoverFragment())
                     .commit();
         }
-        // Set a listener to handle navigation item selections
+        // Đều hướng cho bottom menu
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
 
-                // Determine which fragment to display using if-else
                 if (item.getItemId() == R.id.discover) {
                     selectedFragment = new DiscoverFragment();
                 } else if (item.getItemId() == R.id.playlist) {
@@ -58,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new UserFragment();
                 }
 
-                // Replace the current fragment with the selected fragment
                 if (selectedFragment != null) {
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.frame_layout, selectedFragment)

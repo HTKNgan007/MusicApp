@@ -43,7 +43,7 @@ public class FavoriteFragment extends Fragment {
 
         // Khởi tạo các view
         favoriteRecyclerView = view.findViewById(R.id.favorite_recycler_view);
-        noFavoritesTextView = view.findViewById(R.id.noFavoritesTextView);  // Lấy TextView
+        noFavoritesTextView = view.findViewById(R.id.noFavoritesTextView);
         favoriteSongsList = new ArrayList<>();
         songsListAdapter = new SongsListAdapter(favoriteSongsList);
 
