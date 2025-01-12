@@ -77,4 +77,10 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.MyVi
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.bindData(songIdList.get(position));
     }
+
+    public void updateSongList(List<String> newSongList) {
+        songIdList.clear();
+        songIdList.addAll(newSongList);
+        notifyDataSetChanged();
+    }
 }
