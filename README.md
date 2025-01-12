@@ -25,3 +25,7 @@
 
 ## **Màn hình thông tin người dùng**
 <img width="378" alt="Ảnh màn hình 2025-01-12 lúc 21 29 29" src="https://github.com/user-attachments/assets/e534bfad-f5c6-45bd-b058-bf5acf612d1c" />
+
+## Xem video Demo App: <a href="https://youtu.be/fHtmKvZIH7s">Click vào để xem</a>
+
+_Hà Thị Kiều Ngân - 64131410_
