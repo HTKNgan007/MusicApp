@@ -48,6 +48,7 @@
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="16dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
         <View
@@ -62,6 +63,7 @@
             android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:padding="16dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
         <View
@@ -76,6 +78,7 @@
             android:hint="Xác nhận mật khẩu"
             android:inputType="textPassword"
             android:padding="16dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
         <View
